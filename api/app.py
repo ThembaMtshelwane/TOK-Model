@@ -1,14 +1,15 @@
-from flask import Flask, jsonify
+import sys
+import os
+
+# Add the root directory of the project to the module search path
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+
+from flask import Flask
+from api.routes.system_routes import system_routes
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return jsonify(message="Welcome to your Python server!")
-
-@app.route('/about')
-def about():
-    return jsonify(info="This is a simple Flask server.")
+app.register_blueprint(system_routes, url_prefix='/systems')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
