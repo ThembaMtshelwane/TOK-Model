@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from api.controllers.system import best_impulse_response,convolution
+from controllers.system import best_impulse_response,convolution
 
 system_routes = Blueprint('system_routes', __name__)
 
